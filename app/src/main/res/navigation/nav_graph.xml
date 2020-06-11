@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/UserInfoFragment">
+
+    <fragment
+        android:id="@+id/UserInfoFragment"
+        android:name="com.abdul.techm_abdul.ui.UserInfoFragment"
+        android:label="@string/user_info_fragment_label"
+        tools:layout="@layout/fragment_user_info">
+
+        <action
+            android:id="@+id/action_UserInfoFragment_to_AlbumFragment"
+            app:destination="@id/AlbumFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/AlbumFragment"
+        android:name="com.abdul.techm_abdul.ui.AlbumFragment"
+        android:label="@string/album_fragment_label"
+        tools:layout="@layout/fragment_album">
+
+        <!--        <action-->
+        <!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
+        <!--            app:destination="@id/FirstFragment" />-->
+    </fragment>
+</navigation>
