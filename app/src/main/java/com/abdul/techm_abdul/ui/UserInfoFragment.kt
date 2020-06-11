@@ -6,27 +6,45 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.abdul.techm_abdul.R
+import com.abdul.techm_abdul.adapters.UserInfoListAdaptor
+import com.abdul.techm_abdul.databinding.FragmentUserInfoBinding
+import com.abdul.techm_abdul.viewmodels.UserViewModel
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class UserInfoFragment : Fragment() {
 
+    private val userViewModel: UserViewModel by activityViewModels()
+
+    //    private val pictureListViewModel: PictureListViewModel by activityViewModels()
+    private lateinit var binding: FragmentUserInfoBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_info, container, false)
+        binding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_user_info, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            findNavController().navigate(R.id.action_UserInfoFragment_to_AlbumFragment)
-        }
+        userViewModel.getUsers().observe(requireActivity(), Observer { users ->
+            binding.recyclerViewUsers.layoutManager = LinearLayoutManager(requireContext())
+            binding.recyclerViewUsers.adapter =
+                UserInfoListAdaptor(users, requireContext(), userViewModel)
+        })
+
     }
+
 }
