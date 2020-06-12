@@ -36,7 +36,7 @@ class UserInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userViewModel.getUsers().observe(requireActivity(), Observer { users ->
+        userViewModel.getUsers().observe(viewLifecycleOwner, Observer { users ->
             binding.recyclerViewUsers.layoutManager = LinearLayoutManager(requireContext())
             binding.recyclerViewUsers.adapter =
                 UserInfoListAdaptor(users, requireContext(), userViewModel)

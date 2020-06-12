@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abdul.techm_abdul.R
@@ -36,6 +37,9 @@ class AlbumFragment : Fragment() {
         // Inflate the layout for this fragment
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_album, container, false)
+        binding.toolbar.setNavigationOnClickListener { view ->
+            view.findNavController().navigateUp()
+        }
         return binding.root
     }
 
@@ -53,8 +57,7 @@ class AlbumFragment : Fragment() {
                         binding.recyclerViewPictures.adapter =
                             PictureListAdaptor(pictures, requireContext(), pictureViewModel)
 
-                        (activity as? AppCompatActivity)?.supportActionBar?.title =
-                            "Album ID: " + selectedUser.id
+                        binding.toolbarTitle.text = "Album ID: " + selectedUser.id
 
                     })
 

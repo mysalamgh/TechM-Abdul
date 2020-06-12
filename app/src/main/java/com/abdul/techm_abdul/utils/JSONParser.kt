@@ -1,10 +1,8 @@
-package com.abdul.techm_abdul.utilities
+package com.abdul.techm_abdul.utils
 
-import android.util.Base64
 import android.util.Log
 import org.json.JSONArray
 import org.json.JSONException
-import org.json.JSONObject
 import java.io.*
 import java.net.HttpURLConnection
 import java.net.SocketTimeoutException

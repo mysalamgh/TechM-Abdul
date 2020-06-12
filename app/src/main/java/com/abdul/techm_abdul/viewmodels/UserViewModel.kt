@@ -8,7 +8,7 @@ import com.abdul.techm_abdul.models.Address
 import com.abdul.techm_abdul.models.Company
 import com.abdul.techm_abdul.models.Geo
 import com.abdul.techm_abdul.models.User
-import com.abdul.techm_abdul.utilities.JSONParser
+import com.abdul.techm_abdul.utils.JSONParser
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

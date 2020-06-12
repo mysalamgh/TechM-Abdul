@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.abdul.techm_abdul.models.Picture
-import com.abdul.techm_abdul.utilities.JSONParser
+import com.abdul.techm_abdul.utils.JSONParser
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -45,7 +45,6 @@ class PictureViewModel : ViewModel() {
                 }
             }
         }
-
         userPictures.value = userPictureList
         return userPictures
     }
