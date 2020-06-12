@@ -42,12 +42,12 @@ class AlbumFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        userViewModel.getSelectedUser().observe(requireActivity(), Observer { selectedUser ->
+        userViewModel.getSelectedUser().observe(viewLifecycleOwner, Observer { selectedUser ->
 
-            pictureViewModel.getPictures().observe(requireActivity(), Observer {
+            pictureViewModel.getPictures().observe(viewLifecycleOwner, Observer {
 
                 pictureViewModel.getUserPictures(selectedUser.id)
-                    .observe(requireActivity(), Observer { pictures ->
+                    .observe(viewLifecycleOwner, Observer { pictures ->
                         binding.recyclerViewPictures.layoutManager =
                             LinearLayoutManager(requireContext())
                         binding.recyclerViewPictures.adapter =
