@@ -10,20 +10,25 @@
         android:name="com.abdul.techm_abdul.ui.UserInfoFragment"
         android:label="@string/user_info_fragment_label"
         tools:layout="@layout/fragment_user_info">
-
         <action
             android:id="@+id/action_UserInfoFragment_to_AlbumFragment"
             app:destination="@id/AlbumFragment" />
-
     </fragment>
+
     <fragment
         android:id="@+id/AlbumFragment"
         android:name="com.abdul.techm_abdul.ui.AlbumFragment"
         android:label="@string/album_fragment_label"
         tools:layout="@layout/fragment_album">
-
-        <!--        <action-->
-        <!--            android:id="@+id/action_SecondFragment_to_FirstFragment"-->
-        <!--            app:destination="@id/FirstFragment" />-->
+        <action
+            android:id="@+id/action_AlbumFragment_to_PictureFragment"
+            app:destination="@id/PictureFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/PictureFragment"
+        android:name="com.abdul.techm_abdul.ui.PictureFragment"
+        android:label="Photo ID"
+        tools:layout="@layout/fragment_picture" />
+
 </navigation>

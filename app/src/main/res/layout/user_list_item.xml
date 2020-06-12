@@ -11,41 +11,47 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
+        android:layout_margin="5dp"
+        android:background="@color/colorBlue"
+        android:foreground="?android:attr/selectableItemBackground"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textViewId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
+            android:layout_margin="5dp"
             android:gravity="center"
-            android:text="@{Integer.toString(userInfo.id)}"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:text="@{`ID: ` + Integer.toString(userInfo.id)}"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorWhite" />
 
         <TextView
             android:id="@+id/textViewName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:text="@{userInfo.name}"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:layout_margin="5dp"
+            android:text="@{`Name: ` + userInfo.name}"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorWhite" />
 
         <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:text="@{userInfo.email}"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:layout_margin="5dp"
+            android:text="@{`Email: ` + userInfo.email}"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorWhite" />
 
         <TextView
             android:id="@+id/textViewPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:text="@{userInfo.phone}"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:layout_margin="5dp"
+            android:text="@{`Phone: ` + userInfo.phone}"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/colorWhite" />
 
     </LinearLayout>
 

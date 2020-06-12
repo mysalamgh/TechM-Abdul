@@ -1,15 +1,14 @@
 package com.abdul.techm_abdul.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.abdul.techm_abdul.R
 import com.abdul.techm_abdul.adapters.UserInfoListAdaptor
@@ -22,8 +21,6 @@ import com.abdul.techm_abdul.viewmodels.UserViewModel
 class UserInfoFragment : Fragment() {
 
     private val userViewModel: UserViewModel by activityViewModels()
-
-    //    private val pictureListViewModel: PictureListViewModel by activityViewModels()
     private lateinit var binding: FragmentUserInfoBinding
 
     override fun onCreateView(
@@ -44,6 +41,8 @@ class UserInfoFragment : Fragment() {
             binding.recyclerViewUsers.adapter =
                 UserInfoListAdaptor(users, requireContext(), userViewModel)
         })
+
+        (activity as? AppCompatActivity)?.supportActionBar?.title = "User Info"
 
     }
 

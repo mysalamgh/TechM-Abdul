@@ -1,7 +1,6 @@
 package com.abdul.techm_abdul.viewmodels
 
 import android.os.AsyncTask
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,41 +9,60 @@ import com.abdul.techm_abdul.utilities.JSONParser
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
-import java.util.HashMap
+import java.util.*
+import kotlin.collections.ArrayList
 
 class PictureViewModel : ViewModel() {
 
     var jsonParser: JSONParser = JSONParser()
-
-    var pictures: ArrayList<Picture> = ArrayList()
-    private val userPictures = MutableLiveData<ArrayList<Picture>>()
-
     val urlGetPictures: String = "https://jsonplaceholder.typicode.com/photos"
 
-    init {
-        loadPictureList()
+    var pictureList: ArrayList<Picture> = ArrayList()
+    private val userPictures = MutableLiveData<ArrayList<Picture>>()
+    private val pictures: MutableLiveData<ArrayList<Picture>> by lazy {
+        MutableLiveData<ArrayList<Picture>>().also {
+            loadPictures()
+        }
+    }
+    private val selectedPicture = MutableLiveData<Picture>()
+
+
+    fun getPictures(): LiveData<ArrayList<Picture>> {
+        return pictures
+    }
+
+    private fun loadPictures() {
+        GetPictures().execute()
     }
 
     fun getUserPictures(albumId: Int): LiveData<ArrayList<Picture>> {
-        var userPictureList: ArrayList<Picture> = ArrayList()
+        val userPictureList: ArrayList<Picture> = ArrayList()
         userPictureList.clear()
-        for (pic in pictures) {
-            if (pic.albumId == albumId) {
-                userPictureList.add(pic)
+        if (pictures.value != null) {
+            for (pic in pictures.value!!) {
+                if (pic.albumId == albumId) {
+                    userPictureList.add(pic)
+                }
             }
         }
+
         userPictures.value = userPictureList
         return userPictures
     }
 
-    private fun loadPictureList() {
-        GetPictures().execute()
+    fun getSelectedPicture(): LiveData<Picture> {
+        return selectedPicture
     }
 
-    inner class  GetPictures : AsyncTask<String, String, String>() {
+    fun selectPicture(picture: Picture) {
+        selectedPicture.value = picture
+    }
+
+
+    inner class GetPictures : AsyncTask<String, String, String>() {
 
         override fun onPreExecute() {
-            pictures.clear()
+            pictureList.clear()
         }
 
         override fun doInBackground(vararg params: String?): String {
@@ -66,7 +84,7 @@ class PictureViewModel : ViewModel() {
                     for (i in 0 until json.length()) {
                         val pictureJSONObj: JSONObject = json.getJSONObject(i)
 
-                        pictures.add(
+                        pictureList.add(
                             Picture(
                                 pictureJSONObj.getInt("albumId"),
                                 pictureJSONObj.getInt("id"),
@@ -86,7 +104,7 @@ class PictureViewModel : ViewModel() {
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
-//            pictures.value = pictureList
+            pictures.value = pictureList
         }
 
     }
