@@ -41,9 +41,7 @@ class UserInfoFragment : Fragment() {
             binding.recyclerViewUsers.adapter =
                 UserInfoListAdaptor(users, requireContext(), userViewModel)
         })
-
-        (activity as? AppCompatActivity)?.supportActionBar?.title = "User Info"
-
+        binding.toolbarTitle = "User Info"
     }
 
 }

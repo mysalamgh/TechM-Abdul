@@ -57,7 +57,7 @@ class AlbumFragment : Fragment() {
                         binding.recyclerViewPictures.adapter =
                             PictureListAdaptor(pictures, requireContext(), pictureViewModel)
 
-                        binding.toolbarTitle.text = "Album ID: " + selectedUser.id
+                        binding.toolbarTitle = "Album ID: " + selectedUser.id
 
                     })
 

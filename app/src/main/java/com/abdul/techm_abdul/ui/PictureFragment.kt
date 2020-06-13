@@ -36,8 +36,8 @@ class PictureFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         pictureViewModel.getSelectedPicture().observe(viewLifecycleOwner, Observer { picture ->
             binding.picture = picture
-            binding.toolbarTitle.text =
-                "Album ID: " + picture.albumId + System.getProperty("line.separator") + " Photo ID: " + picture.id
+            binding.toolbarTitle =
+                "Album ID: " + picture.albumId + System.getProperty("line.separator") + "Photo ID: " + picture.id
         })
     }
 

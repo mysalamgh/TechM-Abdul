@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="toolbarTitle"
+            type="String" />
+
+        <variable
             name="picture"
             type="com.abdul.techm_abdul.models.Picture" />
     </data>
@@ -35,12 +39,12 @@
                     app:popupTheme="@style/AppTheme.PopupOverlay" />
 
                 <TextView
-                    android:id="@+id/toolbarTitle"
+                    android:id="@+id/textViewToolbarTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Photo ID: 1"
+                    android:text="@{toolbarTitle}"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@color/colorWhite"
                     android:textStyle="bold" />
