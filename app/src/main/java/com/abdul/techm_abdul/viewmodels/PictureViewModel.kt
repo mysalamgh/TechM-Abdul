@@ -57,6 +57,10 @@ class PictureViewModel : ViewModel() {
         selectedPicture.value = picture
     }
 
+    fun setPictures(pics: ArrayList<Picture>) {
+        pictures.value = pics
+    }
+
 
     inner class GetPictures : AsyncTask<String, String, String>() {
 
